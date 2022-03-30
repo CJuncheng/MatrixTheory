@@ -1,0 +1,273 @@
+
+\section{特征值的估计}
+\subsection{特征值的估计}
+
+\subsubsection{特征值的上界估计}
+\begin{theorem}[Schur不等式]
+	设$A\in C^{n\times n}$的特征值为$\lambda_1,\lambda_2,\cdots, \lambda_n$,则
+	\[
+	\colorbox{yellow}{$\sum\limits_{i=1}^n |\lambda_i|^2\leq \sum\limits_{i=1}^{n}\sum\limits_{i=1}^{n}|a_{ij}|^2=\|A\|_F^2$}
+	\]
+	且等号成立当且仅当$A$为正规矩阵.
+\end{theorem}
+\begin{proof}
+	\[
+	\begin{split}
+	A\in C^{n\times n}\Rightarrow A=URU^H(\mbox{引理\ref{hhnnk}})&\Rightarrow\sum\limits_{i=1}^n |\lambda_i|^2=\sum\limits_{i=1}^n |r_{ii}|^2\leq \sum\limits_{i=1}^n |r_{ii}|^2+\sum\limits_{i=1}^n |r_{ij}|^2\\
+	&=\|R\|_F^2=\mathrm{tr}(R^HR)\\
+	&\left(X=UYU^H\Rightarrow X^HX=U(Y^HY)U^H \Rightarrow \mathrm{tr}(X^HX)=\mathrm{tr}(X^HX)\right)\\
+	&=\mathrm{tr}(A^HA)=\|A\|_F^2
+	\end{split}
+	\]
+	等号成立$\Leftrightarrow \sum\limits_{i=1}^n |r_{ij}|^2=0 \Leftrightarrow R$为对角矩阵$\Leftrightarrow A$为正规矩阵(定理\ref{jjj}).
+\end{proof}
+\begin{note}
+\begin{enumerate}
+\item$X$与$Y$酉相似,则
+	\[
+	\begin{split}
+	&\Rightarrow \mbox{$X$与$Y$迹相同}\\
+		&\Rightarrow\mbox{$X^HX$与$Y^HY$酉相似}\Rightarrow\mbox{$X$与$Y$$X^HX$与$Y^HY$迹相同}\Rightarrow\|X\|_F^2=\|Y\|_F^2
+				\end{split}\]
+\item $|\lambda_{i}|^2 \leq\sum\limits_{i=1}^n |\lambda_{i}|^2 \leq\|A\|_F^2\Rightarrow \lambda_{i}|\leq\|A\|_F$
+\item$|\lambda_{i}|^2 \leq\sum\limits_{i=1}^n |\lambda_{i}|^2\leq \sum\limits_{i=1}^{n}\sum\limits_{i=1}^{n}|a_{ij}|^2\leq n^2 \max\{ |a_{ij}|^2\}\Rightarrow |\lambda_{i} |\leq n \max \{|a_{ij}|\}$
+\end{enumerate}
+\end{note}
+
+
+\noindent 符号约定：
+
+\begin{enumerate}
+\item $B=\dfrac{1}{2}(A+A^H)=(b_{ij})_{n\times n}\quad 	C=\dfrac{1}{2}(A-A^H)=(c_{ij})_{n\times n}$\textcolor{red}{($B^H=B,C^H=-C$)($B$为Hermite矩阵,特征值为实数；$C$为反Hermite矩阵,特征值为纯虚数)}
+\item $A,B,C$特征值分别为$\{\lambda_1,\lambda_2,\cdots,\lambda_n\},\{\mu_1,\mu_2,\cdots,\mu_n\},\{i\gamma_1,i\gamma_2,\cdots,i\gamma_n\}$,且满足$|\lambda_1|\geq|\lambda_2|\cdots|\lambda_n|, \mu_1\geq\mu_2\cdots\mu_n,\gamma_1\geq\gamma_2\cdots\gamma_n$
+\end{enumerate}
+\begin{theorem}[Hirsh]
+	设$A\in C^{n\times n}$的特征值为$\lambda_1,\lambda_2,\cdots,\lambda_n$,则
+	\begin{enumerate}
+		\item \colorbox{yellow}{$|\lambda_{i} |\leq n \max \{|a_{ij}|\}$}
+		\item \colorbox{yellow}{$|\mathrm{Re}\lambda_{i} |\leq n \max \{|b_{ij}|\}$}
+		\item \colorbox{yellow}{$|\mathrm{Im}\lambda_{i} |\leq n \max \{|c_{ij}|\}$}
+	\end{enumerate}
+\end{theorem}
+
+\noindent 特征值虚部模的估计可以更精确化.
+\begin{theorem}[Bendixsion]
+设$A\in R^{n\times n}$,$A$的任一特征值$\lambda_i$满足：
+\[
+\colorbox{yellow}{$
+|\mathrm{Im}\lambda_{i}|\leq\sqrt{\dfrac{n(n-1)}{2}}\max \{|c_{ij}|\}(c_{ii}=0)
+$}\]
+\end{theorem}
+
+\subsubsection{特征值上下界的估计}
+
+\begin{theorem}
+\begin{enumerate}
+	\item 设$A\in C^{n\times n},B,C,\lambda_i,\mu_i,\gamma_i$同上，则有
+	\[
+	\begin{split}
+		&\colorbox{yellow}{$\mu_n\leq \mathrm{Re}\lambda_{i}\leq\mu_1$}\\
+		&\colorbox{yellow}{$\gamma_n\leq \mathrm{Im}\lambda_{i}\leq\gamma_1$}
+	\end{split}
+	\]
+	\item(Browne) 
+	设$A\in C^{n\times n}$的特征值$\lambda_1,\lambda_2,\cdots,\lambda_n$,奇异值$\sigma_1\geq\sigma_2\cdots\geq\sigma_n$，则有
+	\[
+	\colorbox{yellow}{$\sigma_n\leq|\lambda_i|\leq\sigma_1$}
+	\]
+	\colorbox{yellow}{酉矩阵任一特征值的模为1}
+	\item(Hadamard不等式) 设$A\in C^{n\times n}$，则
+	\[
+	\prod\limits_{i=1}^{n}|\lambda_i(A)|=|detA|\leq\left[\prod\limits_{j=1}^{n}\left( \sum\limits_{i=1}^{n}|a_{ij}|^2\right)\right]^{1/2}
+	\]
+\end{enumerate}
+\end{theorem}
+
+\subsection{圆盘定理}
+利用矩阵元素研究特征值分布.
+\subsubsection{盖尔圆盘基本定理}
+\begin{definition}
+	设$A= (a_{ij})\in C^{n\times n}$
+	\[
+	\begin{split}
+	&\mbox{\textcolor{green}{\heiti 行盖尔圆}}\Leftrightarrow\colorbox{yellow}{$S_i=\{z\in C:|z-a_{ii}|\leq R_i=\sum\limits_{j\ne i}|a_{ij}|\}$}\\
+	&\mbox{\textcolor{green}{\heiti 列盖尔圆}}\Leftrightarrow\colorbox{yellow}{$G_j=\{z\in C:|z-a_{jj}|\leq C_i=\sum\limits_{i\ne j}|a_{ij}|\}$}
+	\end{split}
+	\]
+	
+
+\end{definition}
+
+\begin{theorem}
+\begin{enumerate}
+	\item (圆盘定理1) 设$A\in C^{n\times n}$，则$A$的任一特征值满足下列任一一个式子.
+		\begin{enumerate}
+			\item \label{yyyy}\colorbox{yellow}{$ \lambda \in S=\bigcup\limits_{i=1}^{n}S_i$}
+	    	\item$ \lambda \in G=\bigcup\limits_{j=1}^{n}G_j$
+	    	\item$ \lambda \in T= \left(\bigcup\limits_{i=1}^{n}S_i \right)\bigcap\left(\bigcup\limits_{j=1}^{n}G_j \right)$
+		\end{enumerate}
+	\begin{proof}
+	\ref{yyyy}
+	
+	设$A\in C^{n\times n}, Ax=\lambda x \left(x=(x_1,x_2,\cdots,x_n)^T \ne0\right) \Rightarrow \sum\limits_{j=1}^na_{ij}x_j=\lambda x_i$,
+	
+	令$|x_k|=\max\{|x_1|,|x_2|,\cdots,|x_n|\}>0$，则$\sum\limits_{j=1}^na_{kj}x_j=\lambda x_k\Rightarrow x_k(\lambda -a_{kk})=\sum\limits_{j=1,j\ne k}^na_{kj}x_j\Rightarrow |x_k||\lambda -a_{kk}|\leq \sum\limits_{j=1,j\ne k}^n |a_{kj}||x_j|\leq |x_k|\sum\limits_{j=1,j\ne k}^n |a_{kj}|$
+	
+	$\Rightarrow |\lambda -a_{kk}|\leq \sum\limits_{j=1,j\ne k}^n |a_{kj}|=R_k\Rightarrow \lambda \in S_k\subset S=\bigcup\limits_{i=1}^{n}S_i$	
+	
+	\end{proof}
+\item(圆盘定理2)\colorbox{yellow}{设$A\in C^{n\times n}$，$A$的$n$个盖尔圆中有$k$个盖尔圆的并形成一个连通区域，}
+
+\colorbox{yellow}{且它与余下的$n-k$个盖尔圆都不相交，则在该区域中恰好有$A$的$k$个特征值.}
+
+
+\begin{corollary}
+\begin{enumerate}
+	\item \colorbox{yellow}{$A\in C^{n\times n}$,$A$的$n$个盖尔圆两两互不相交$\Rightarrow$ $A$相似于对角矩阵}
+	
+	\colorbox{yellow}{($\Rightarrow A$有$n$个不同的特征值$\Rightarrow A$为单纯矩阵)}	
+	\item \colorbox{yellow}{$A\in R^{n\times n}$,$A$的$n$个盖尔圆两两互不相交$\Rightarrow$ $A$有$n$个不同的实特征值}	
+\end{enumerate}
+\end{corollary}
+
+\end{enumerate}
+\end{theorem}
+
+\subsubsection{特征值精细化与分离}
+分离某些盖尔圆(圆心不变).
+
+设$A\in C^{n\times n}, B=D^{-1}AD$ $A$与$B$相似，$D$可逆，且$D=\mathrm{diag}(p_1,p_2,\cdots,p_n)(p_i>0)$，则有
+	\[
+\begin{split}
+	&\colorbox{yellow}{$ R_i(B)=\dfrac{1}{p_i}\sum\limits_{j=1,j\ne i}^{n}|a_{ij}|p_j, \quad Q_i=\{z\in C:|z-a_{ii}|\leq R_i(B)\}$}\\
+	&\colorbox{yellow}{$ C_j(B)=p_j\sum\limits_{i=1,i\ne j}^{n}\dfrac{|a_{ij}|}{p_i}, \quad P_j=\{z\in C:|z-a_{jj}|\leq C_j(B)\}$}\\
+\end{split}
+\]
+\begin{note}
+\colorbox{yellow}{若要分离第$i,j$个盖尔圆，则取$p_i=p_j=1>p_l(l\ne i,j,p_l\mbox{可以取0.1})$}
+
+若要分离盖尔圆圆心，则$D$不能取对角矩阵.	
+\end{note}
+
+\begin{theorem}
+
+	设$A\in C^{n\times n}$，则$A$的任一特征值满足.
+	\[
+	\lambda \in  \left(\bigcup\limits_{i=1}^{n}Q_i \right)\bigcap\left(\bigcup\limits_{j=1}^{n}P_j \right)
+	\]
+\end{theorem}
+\noindent\rule[0.0\baselineskip]{10cm}{0.5pt} 
+\begin{definition}
+	设$A= (a_{ij})\in C^{n\times n}$
+	\[
+	\begin{split}
+		&\mbox{\textcolor{green}{\heiti 行(严格)对角占优}}\Leftrightarrow\colorbox{yellow}{$|a_{ii}|\geq(>) R_i=\sum\limits_{j\ne i}|a_{ij}|$}\\
+		&\mbox{\textcolor{green}{\heiti 列(严格)对角占优}}\Leftrightarrow\colorbox{yellow}{$|a_{jj}|\geq(>) C_i=\sum\limits_{i\ne j}|a_{ij}|$}
+	\end{split}
+	\]
+\end{definition}
+
+\begin{theorem}
+	设$A= (a_{ij})\in C^{n\times n}$行(列)严格对角占优，则
+	\begin{enumerate}
+		\item \colorbox{yellow}{$A$可逆，且$\lambda \in \bigcup\limits_{i=1}^{n}\tilde{S}_i\quad(\tilde{S}_i=\{z\in C:|z-a_{ii}|\leq |a_{ii}|\})$}
+		\item \colorbox{yellow}{若$A$的所有对角元都为正数，则$A$的特征值位于右半平面}(对应一般矩阵特征值有正实部，Hermite矩阵特征值为正数)
+	\end{enumerate}
+\end{theorem}
+
+
+\subsubsection{盖尔圆盘定理的推广}
+
+\begin{theorem}
+
+\begin{enumerate}
+	\item(Ostrowski)	设$A= (a_{ij})\in C^{n\times n}$，$\alpha \in [0,1]$为给定的数，则$A$的所有特征值位于$n$个圆盘的并集
+	\[
+	\lambda \in \bigcup\limits_{i=1}^{n}\{z\in C:|z-a_{ii}|\leq R_i^\alpha+ C_i^{1-\alpha}\}
+	\]
+	\item 设$A= (a_{ij})\in C^{n\times n}$，$\alpha in [0,1]$为给定的数，则$A$的所有特征值位于如下并集中
+	\[
+	\lambda \in \bigcup\limits_{i=1}^{n}\{z\in C:|z-a_{ii}|\leq \alpha R_i +(1-\alpha)C_i\}
+	\]
+	\begin{corollary}
+	设$A= (a_{ij})\in C^{n\times n}$,如果存在$\alpha in [0,1]$使得
+	\[
+	|a_{ii}|>\alpha R_i +(1-\alpha)C_i,i=1,2,\cdots,n
+	\]
+则$A$非奇异.
+	\end{corollary}
+	\item 设$A= (a_{ij})\in C^{n\times n}$,则$A$的特征值位于$\dfrac{n(n-1)}{2}$个$Cassini$卵形域$O_{ij}$的并集中，即
+\[
+\lambda \in \bigcup\limits_{j\ne i}^{n}O_{ij}= \bigcup\limits_{j\ne i}^{n}\{z\in C:|z-a_{ii}||z-a_{jj}|\leq R_iR_j,i\ne j\}
+\]
+\end{enumerate}
+\end{theorem}
+
+\subsection{Hermite矩阵特征值的变分特征}
+\subsubsection{Rayleigh商的定义}
+
+\begin{definition}
+	设$A\in C^{n\times n}$为 Hermite矩阵，$x\in C^n$则$A$的\textcolor{red}{Rayleigh商} 表示为
+	\[
+	\colorbox{yellow}{$R(x)=\dfrac{x^HAx}{x^Hx}\quad x\ne 0$}
+	\]
+	\begin{note}
+		\begin{enumerate}
+	\item 另一种形式
+	设$u=\dfrac{x}{\|x\|_2}\Rightarrow x=ku(k=\|x\|_2),\|u\|_2=1,u^Hu=1$
+	
+	$\Rightarrow$ \colorbox{yellow}{$R(x)=R(ku)=u^HAu$}
+	\item $R(kx)=R(x)=k^{0}R(x)\Rightarrow$Rayleigh商是0次齐次函数($f(lx)=l^mf(x)$，称$f(x)$为$m$次齐次函数)
+	\item $R_{A- kE}(x)=\dfrac{x^H(A-kE)x}{x^Hx}=R_A(x)-k$\quad 平移不变性.
+	\item $ x^H\left(Ax-R(x)x\right)=x^HAx-R(x)x^Hx=0\Rightarrow x\bot\left(Ax-R(x)x\right)$
+\end{enumerate}
+	\end{note}
+\end{definition}
+
+
+\subsubsection{Rayleigh商性质}
+\begin{theorem}[Rayleigh-Ritz]
+	\label{hhyy}
+设$A\in C^{n\times n}$为 Hermite矩阵，$\lambda_1\geq\lambda_2\geq\cdots\geq \lambda_n$,则
+	\begin{enumerate}
+		\item \colorbox{yellow}{$\lambda_nx^Hx\leq x^HAx\leq \lambda_1x^Hx(\forall x \in C^n) \Rightarrow \lambda_n\leq R(x)\leq \lambda_1(x\ne 0) $ }
+		\item\colorbox{yellow}{$\lambda_{max}=\lambda_{1}=\max\limits_{x\ne 0}R(x)=\max\limits_{u^Hu=1}u^HAu$}
+		\item\colorbox{yellow}{$\lambda_{mim}=\lambda_{n}=\min\limits_{x\ne 0}R(x)=\min\limits_{u^Hu=1}u^HAu$}
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	内容...
+\end{proof}
+
+
+
+\begin{theorem}
+	设$A\in C^{n\times n}$为 Hermite矩阵，$\lambda_1\geq\lambda_2\geq\cdots\geq \lambda_n$,$u_1,u_2,\cdots, u_n$为对应的标准正交特征向量，令$W=\mathrm{span}\{u_s,\cdots,u_t\}(1\leq s \leq t\leq n)$(\textcolor{red}{定理\ref{hhyy}在子空间中同样适用}),则
+	\[\colorbox{yellow}{$
+	\lambda_t=\min\limits_{0\ne x\in W}R(x)\quad\lambda_s=\max\limits_{0\ne x\in W}R(x)$}(\lambda_s\leq R(x)\leq \lambda_t(0 \ne x \in W))
+	\]
+\end{theorem}
+
+
+
+\begin{theorem}[Courant -Fischer]
+	设$A\in C^{n\times n}$为 Hermite矩阵，$\lambda_1\geq\lambda_2\geq\cdots\geq \lambda_i\geq\cdots\geq\lambda_{n-1}\geq \lambda_n$则
+	\[\begin{split}
+	&\colorbox{yellow}{$\lambda_i=\max\limits_{W(\mathrm{dim}(W)=i)}\min\limits_{x\in W,x\ne 0}R(x)=\max\limits_{W(\mathrm{dim}(W)=i)}\min\limits_{u\in W,\|u\|_2= 1}u^HAu$}\\
+	&\colorbox{yellow}{$\lambda_i=\max\limits_{W(\mathrm{dim}(W)=n-i+1)}\min\limits_{x\in W,x\ne 0}R(x)=\max\limits_{W(\mathrm{dim}(W)=n-i+1)}\min\limits_{u\in W,\|u\|_2= 1}u^HAu$}
+\end{split}
+	\]
+\end{theorem}
+
+\begin{theorem}
+	设$A,B\in C^{n\times n}$为 Hermite矩阵，则$\forall k=0,1,\cdots,n$有
+	\[
+	\lambda_k(A)+\lambda_{n}(B)\leq \lambda_k(A+B)\leq \lambda_k(A)+\lambda_{1}(B)
+	\]
+\end{theorem}
+
+
+
+
+
+

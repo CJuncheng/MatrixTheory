@@ -1,0 +1,324 @@
+\section{向量与矩阵的的范数}
+\subsection{向量范数}
+ \subsubsection{向量范数的定义}
+
+\begin{definition}
+设映射 \( \|\cdot\|: C^{n} \rightarrow R \) 满足:
+\begin{enumerate}[(a)]
+	\item 正定性：\( \|x\| \geq 0 \), 当且仅当 \( x=0 \) 时, \( \|x\|=0 \);
+	\item 齐次性：\( \|\lambda x\|=|\lambda| \cdot\|x\|, \lambda \in C, x \in C^{n} \);
+	\item 三角不等式：\( \|x+y\| \leq\|x\|+\|y\|, \forall x, y \in C^{n} \).
+\end{enumerate}
+	则称映射 \( \|\cdot\| \) 为 \( C^{n} \) 上向量 \( x \) 的范数.
+\end{definition}
+
+\noindent 向量范数的性质：
+\begin{enumerate}[(a)]
+	\item \( \|0\|=0 \);
+	\item \( x \neq 0 \) 时,\( \left\|\frac{1}{\|x\|} x\right\|=1 \);
+	\item 对 $\forall x \in C^n$，有$\|-x\|=\|x\|$
+	\item 对 $\forall x, y \in C^n$，有$\left|\|x\|-\|y\| \right|  \leq \|x-y\|$
+\end{enumerate}
+ \subsubsection{向量范数的一般形式}
+
+
+\begin{theorem}
+	\label{ennnn}
+设$x=(x_1,x_2,\cdots,x_n)^T\in C^n$则$C^n$上的$\mathrm{H\ddot{o}lder}$范数\textcolor{red}{($p$范数)}表述为
+
+\colorbox{yellow}
+{
+	
+$\| x\|_p=\left(\sum\limits_{i=1}^{n}|x_i|^p\right)^{1/p} \qquad 1\leq p<\infty $
+
+}
+\end{theorem}
+
+\begin{proof}
+$\mathrm{young}$不等式$\Rightarrow$ $\mathrm{H\ddot{o}lder}$不等式$\Rightarrow$定理\ref{ennnn}.
+\end{proof}
+
+\begin{note}
+	特别地，
+\begin{enumerate}
+		\item 向量1范数($p=1$)：\colorbox{yellow}{$\| x\|_1=\sum\limits_{i=1}^{n}|x_i|$}
+		\item 向量2范数($p=2$)：\colorbox{yellow}{$\| x\|_2=\left(\sum\limits_{i=1}^{n}|x_i|^2\right)^{1/2}$}
+		\item 向量$\infty$范数($p\rightarrow\infty$)：\colorbox{yellow}{$\| x\|_\infty=\max\limits_{i}|x_i|$}
+	\end{enumerate}
+
+\end{note}
+
+\subsubsection{向量范数诱导向量范数}
+ 
+\begin{theorem}
+设 \( \|\cdot\| \) 是 \( C^{m} \) 上的范数, \( A \in C_{n}^{m \times n} \), 则 \( \|A \cdot\| \) 是 \( C^{n} \) 上的范数
+\end{theorem}
+\begin{proof}
+	$\|x\|_\beta \xlongequal[]{def}\|y\|_\alpha=\|Ax\|_\alpha$
+	\begin{itemize}
+		\item(正定性)\( x \neq 0 \Rightarrow A x \neq 0 \Rightarrow\|A >x\| 0 \)
+		\item (齐次性)\( \|A(\lambda x)\|=\|\lambda A x\|=|\lambda|\|A x\| \)
+		\item (三角不等式)\( \|A(x+y)\|=\|A x+A y\| \leq\|A x\|+\|A y\| \)
+		 
+	\end{itemize}
+\end{proof}
+\begin{note}
+已知$A^H=A,A\mbox{正定}, \|x\|$是向量范数，则$\|x\|_A\xlongequal[ ]{A=P^HP}\sqrt{x^HAx}=\sqrt{(Px)^HPx}=\|Px\|_2$是$C^n$上的向量范数.
+\end{note}
+
+
+\begin{theorem}
+	设 \( \varepsilon_{1}, \varepsilon_{2}, \cdots, \varepsilon_{n} \) 为线性空间 \( V_{n}(P) \) 的一组基, \( x=\left(\varepsilon_{1}, \varepsilon_{2}, \cdots, \varepsilon_{n}\right) \tilde{x}, \tilde{x}=\left(x_{1}, \cdots, x_{n}\right)^{T}\).
+	\[
+	\|x\|\xlongequal[]{def}\|\tilde{x}\|\mbox{\textcolor{red}{(范数的稳定性)}}
+	\]
+
+\end{theorem}
+
+
+\subsubsection{向量范数的等价性}
+\begin{definition}
+设在 \( V_{n}(P) \) 上定义了 \( \|x\|_{a},\|x\|_{b} \) 两种向 量范数，若存在常数 \( C_{1}>0, C_{2}>0 \), 使得
+\[
+C_{1}\|x\|_{a} \leq\|x\|_{b} \leq C_{2}\|x\|_{d}\qquad \forall x \in V_{n}(P)
+\]
+则称 \( \|x\|_{a} \) 与 \( \|x\|_{b} \) 等价.
+\end{definition}
+
+\begin{theorem}
+	\( V_{n}(P) \) 上的任意两个向量范数与等价.
+\end{theorem}
+
+\subsubsection{向量范数的应用}
+\noindent { 收敛性}
+\begin{theorem}
+设 \( \|\cdot\| \) 是 \( C^{n} \) 上的任一向量范数, 则(收敛归一化)
+\[
+\lim _{k \rightarrow \infty} x^{(k)}=a 
+\Leftrightarrow\lim _{k \rightarrow \infty}|x_i^{(k)}-a_i|=0, 1\leq i\leq n
+\Leftrightarrow\lim _{k \rightarrow \infty}\max\limits_{1\leq i\leq n}\{ |x_i^{(k)}-a_i|\}=0
+\Leftrightarrow \lim _{k \rightarrow \infty}\left\|x^{(k)}-a\right\|=0
+\]
+\end{theorem}
+
+\subsection{矩阵范数}
+\subsubsection{矩阵范数的定义}
+\begin{definition}
+	设 \( A \in P^{m \times n} \), 若映射 \( \|\cdot\|: P^{m \times n} \rightarrow R \) 满足：
+	\begin{enumerate}[(a)]
+		\item 正定性：\( \|A\| \geq 0 \), 当且仅当 \( A=0 \) 时, \( \|A\|=0 \);
+		\item 齐次性：\( \|\lambda A\|=|\lambda|\|A\|, \forall \lambda \in P, \forall A \in P^{m \times n} \);
+		\item 三角不等式： \( \|A+B\| \leq\|A\|+\|B\|, \forall A, B \in P^{m \times n} \).
+	\end{enumerate}
+		则称映射 \( \|\cdot\| \) 为 \( P^{m \times n} \) 上的矩阵范数.
+\end{definition}
+
+\noindent 矩阵范数的性质：
+\begin{enumerate}[(a)]
+	\item \( \|0\|=0 \);
+	\item \( A \neq 0 \) 时,\( \left\|\frac{1}{\|A\|} x\right\|=1 \);
+	\item 对 $\forall A \in P$，有$\|-A\|=\|A\|$
+	\item 对 $\forall A, B \in P^{m\times n}$，有$\left|\|A\|-\|B\| \right|  \leq \|A-B\|$
+\end{enumerate}
+
+ \subsubsection{矩阵范数的一般形式}
+\begin{enumerate}
+	\item 矩阵$m_1$范数($p=1$)：\colorbox{yellow}{$\| A\|_{m_1}=\sum\limits_{j=1}^{n}\sum\limits_{i=1}^{m}|a_{ij}|$}
+	\item 矩阵$m_2$范数($p=2$)：\colorbox{yellow}{$\| A\|_{m_2}=\left(\sum\limits_{j=1}^{n}\sum\limits_{i=1}^{m}|a_{ij}|^2\right)^{1/2}$}
+	\item 矩阵$m_\infty$范数($p\rightarrow\infty$)：\colorbox{yellow}{$\| A\|_{m_\infty}=\max\limits_{i,j}\{|a_{ij}|\}, 1\leq i\leq m,1\leq j\leq n $}
+\end{enumerate}
+
+\subsubsection{矩阵范数的相容性}
+
+\begin{definition}
+	设 \( \|\cdot\|_{a}: P^{m \times l} \rightarrow R,\|\cdot\|_{b}: P^{l \times n} \rightarrow R \), \( \|\cdot\|_{c}: P^{m \times n} \rightarrow R \) 是矩阵范数，如果
+	\[
+	\|A B\|_{c} \leq\|A\|_{a} \cdot\|B\|_{b}
+	\]
+	则称矩阵范数 \( \|\cdot\|_{a},\|\cdot\|_{b} \) 和 \( \|\cdot\|_{c} \) 相容.特别地，如果
+	\[
+	 \|A B\| \leq\|A\| \cdot\|B\|
+	\]
+	则称 \( \|\cdot\| \) 是自相容矩阵范数，简称\( \|\cdot\| \)是相容的矩阵范数.
+\end{definition}
+\begin{note}
+	 \colorbox{yellow}{$\|\cdot\|_{m_1}$和 $\|\cdot\|_{m_2}$均是自相容的矩阵范数，但是
+	 
+	 $\|\cdot\|_{m_\infty}$不是自相容的矩阵范数.}
+\end{note}
+
+
+\begin{theorem}[$\| \cdot\|_{m_2}$的性质]
+设$A\in C^{n\times n}$
+\begin{enumerate}
+	\item 若$A=(\alpha_1,\alpha_2,\cdots,\alpha_n)$,则
+	\[
+	 \colorbox{yellow}{$\| A\|_F^2=\| A\|_{m_2}^2=\sum\limits_{j=1}^{n}\sum\limits_{i=1}^{n}|a_{ij}|^2=\sum\limits_{j=1}^{n}\|\alpha_j\|^2_2=\sum\limits_{j=1}^{n}\alpha_j^H\alpha_j=\mathrm{tr}(A^HA)=\sum\limits_{j=1}^{n}\lambda_i(A^HA)$}
+	\]
+	\item$A\in P^{m\times n},U\in C^{m\times m},U^HU=E,V\in C^{n\times n},V^HV=E$,则
+		\[
+		\| A\|_{m_2}=\| U^HAV\|_{m_2}=\| UAV^H\|_{m_2}
+		\]
+		\[
+		\| A\|_{m_2}=\| UA\|_{m_2}=\| AV\|_{m_2}=\| UAV\|_{m_2}
+		\]	
+\end{enumerate}
+
+\end{theorem}
+
+\subsection{算子范数}
+\subsubsection{矩阵及向量范数的相容性}
+\begin{definition}
+	设$\|\cdot\|_a$是$P^n$上的向量范数，$\|\cdot\|_m$是$P^{m\times n}$上的矩阵范数，且
+	\[
+	\colorbox{yellow}{$\|Ax\|_a\leq \|A\|_m\|x\|_a, A\in P^{m\times n},x\in P^n$}
+	\]
+	则称$\|\cdot\|_m$为与向量范数$\|\cdot\|_a$相容的矩阵范数.
+	
+\end{definition}
+\begin{note}
+	\colorbox{yellow}{$\|A\|_{m_1}$是与向量范数$\|x\|_1$相容的矩阵范数, $\|A\|_{m_2}$是与向量范数$\|x\|_2$相容的矩阵范数, }
+\colorbox{yellow}{但$\|A\|_{m_\infty}$不与向量范数$\|x\|_\infty$相容}
+\end{note}
+
+\subsubsection{算子范数}
+\begin{theorem}
+	设$\|x\|_a$是$P^n$上的向量范数，则
+	\[
+	\colorbox{yellow}{$\|A\|_a=\max\limits_{x\ne 0}\dfrac{\|Ax\|_a}{\|x\|_a}(=\max\limits_{\|u\|_a=1}\|Au\|_a)$}
+	\]
+	\textcolor{red}{是与向量范数$\|x\|_a$相容的矩阵范数.称此矩阵范数为从属于向量范数$\|x\|_a$的算子范数}
+\end{theorem}
+\begin{note}
+	\begin{enumerate}
+		\item \colorbox{yellow}{算子范数是自相容矩阵范数($ \|A B\|_a \leq\|A\|_a \cdot\|B\|_a$);}
+		\item\colorbox{yellow}{算子范数与向量范数$\|x\|_a$相容($ \|Ax\|_a \leq\|A\|_a \cdot\|x\|_a$);}
+		\item\colorbox{yellow}{$a=1,2,\infty$分别对应算子$1,2,\infty$范数;}
+		\item 性质：
+		 \begin{enumerate}
+		 \item 是与向量范数$\|x\|_a$相容的矩阵范数中最小的
+		 \item $\|\cdot\|_a$是算子范数$\Rightarrow\|E\|_a=1$，故$\|E\|_a\ne1\Rightarrow$$\|\cdot\|_a$不是算子范数
+		 \end{enumerate}
+	\end{enumerate}
+\end{note}
+
+
+\begin{theorem}
+设$\|\cdot\|_{m}$是相容的矩阵范数，则存向量范数$\|x\|$使得
+\[
+\|Ax\|\leq \|A\|_{m}\|x\|
+\]
+\end{theorem}
+\begin{note}
+\textcolor{red}{相容矩阵范数必存在与其相容的向量范数}(即相容矩阵范数诱导的向量范数也相容).
+\end{note}
+
+
+\begin{theorem}
+	\label{eeedd}
+	如果$\|\cdot\|_{m}:C^{n\times n}\rightarrow R$是相容的矩阵范数,则对$\forall A\in C^{n\times n}$有
+	\[
+	|\lambda_i|\leq \|A\|_m(\lambda_i\mbox{是$A$的特征值})
+	\]
+
+\end{theorem}
+
+\subsubsection{范数的谱估计}
+已经$A\in C^{n\times n}$,\colorbox{yellow}{谱:$\lambda(A)=\{\lambda|Ax=\lambda x,\forall x\ne 0\}$\qquad 谱半径:$r(A)=\max\limits_{i}|\lambda_i|,\lambda_i\in \lambda(A)$}
+
+由定理\ref{eeedd}知：$r(A)\leq\|A\|_m$, 但存在$\epsilon>0$,使得$\|A\|_m\leq r(A)+\epsilon $
+
+\subsubsection{算子范数的计算}
+	 \begin{enumerate}
+	\item \colorbox{yellow}{极大列和范数(算子$1$范数):$\|A\|_1=\max\limits_{j}\left( \sum\limits_{i=1}^{n}|a_{ij}|\right)$}
+	\item \colorbox{yellow}{极大行和范数(算子$\infty$范数):$\|A\|_\infty=\max\limits_{i}\left( \sum\limits_{j=1}^{n}|a_{ij}|\right)$}
+	\item \colorbox{yellow}{谱范数(算子$2$范数):$\|A\|_2=\sqrt{r(A^HA)}$}
+	\begin{proof}
+	$\|A\|_2=\max\limits_{\|u\|_2=1}\|Au\|_2 $
+	
+\end{proof}
+	谱范数不便计算，但有好的性质($A\in C^{n\times n}$)：
+	 \begin{enumerate}
+	 	\item $\|A\|_2=\|A^H\|_2=\|A^T\|_2=\|\bar{A}\|_2$
+	 	\item $\|AA^H\|_2=\|AA^H\|_2=\|A\|_2^2$
+	 	\item 任意$n$阶酉矩阵$U$和$V$都有(酉不变特性)
+	 	\[
+	 	\|UA\|_2=\|AV\|_2=\|UAV\|_2=\|A\|_2
+	 	\]
+	 	\item $\|A\|_2=\max\limits_{\|x\|_2=\|y\|_2=1}|y^HAx|$(柯西不等式证明)
+	 	\item $\|A\|_2^2\leq \|A\|_1\|A\|_\infty$
+	 \end{enumerate}
+\end{enumerate}
+
+\subsection{范数的应用（不太理解）}
+\subsubsection{病态分析}
+若系数矩阵 $A$ 或常数项 $b$ 的微小变化，引起 $Ax= b$解的巨大变化，则称方程组为病态方程组，其系数矩阵$A$就叫做对于解方程组（或求逆）的病态矩阵. 反之， 方程组就称为良态方程组， $A$ 称为良态矩阵.
+
+若矩阵 $A$ 的微小变化引起特征值的巨大变化，则称矩阵 $A$
+对求特征值来说是病态矩阵.
+
+“病态”是矩阵本身的特性，与所用的计算工具与计算方
+法无关. 但工具条件越好，病态表现相对不明显.
+
+病态分析工具(条件数)：$K_p(A)=\|A_p\|\|A_p^{-1}\|$(刻画矩阵的稳定性)
+
+\subsubsection{矩阵逆的摄动}
+\begin{theorem}
+\( A \in C^{n \times n},\|A\|_{a} \) 是从属于向量范数 \( \|x\|_{a} \) 的算子范数, 如果 \( \|A\|_{a}<1 \), 则 \( E - A \) 可逆, 且
+\[
+\left\|(E -A)^{-1}\right\|_{a} \leq\left(1-\|A\|_{a}\right)^{-1} .
+\]
+	
+\end{theorem}
+
+\begin{theorem}
+	\(A \) 可逆, \( \delta A \) 为扰动矩阵, \( \left\|A^{-1} \delta A\right\|_{a}<1 \), 则
+	
+	\begin{enumerate}
+\item \( A+\delta A \) 可逆;
+\item \( \frac{\left\|A^{-1}-(A+\delta A)^{-1}\right\|_{a}}{\left\|A^{-1}\right\|_{a}} \leq \frac{\left\|A^{-1} \delta A\right\|_{a}}{1-\left\|A^{-1} \delta A\right\|_{a}} . \)
+\item 若 \( \left\|A^{-1}\right\|_{a}\|\delta A\|_{a}<1 \), 则
+\[
+\frac{\left\|A^{-1}-(A+\delta A)^{-1}\right\|_{a}}{\left\|A^{-1}\right\|_{a}} \leq \frac{k(A) \frac{\|\delta A\|_{a}}{\|A\|_{a}}}{1-k(A) \frac{\|\delta A\|_{a}}{\|A\|_{a}}},
+\]
+(其中, \( k(\boldsymbol{A})=\left\|\boldsymbol{A}^{-1}\right\|_{a}\|\boldsymbol{A}\|_{a} \) )(条件数越大，误差上界越大)
+	\end{enumerate}
+\end{theorem}
+
+\subsubsection{线性方程组的摄动}
+\begin{theorem}
+
+在方程组 \( {A} {x}={b} \) 中, \( {A} \) 固定且可逆, 令 \( {b} \neq {0} \) 且有小的摄动 \( \delta b \), 则解方程组
+\[
+ A\left(x_{0}+\delta x\right)=b+\delta b,\left(A x_{0}=b\right)
+\] 
+得 
+\[
+ \frac{\left\|\left(x_{0}+\delta x\right)-x_{0}\right\|}{\left\|x_{0}\right\|}=\frac{\|\delta x\|}{\left\|x_{0}\right\|} \leq K(A) \frac{\|\delta b\|}{\|b\|} 
+\]
+
+ 
+	
+\end{theorem}
+
+\begin{theorem}
+在方程组 \( {A} {x}={b} \) 中, \( {b} \) 固定且 \( {b} \neq {0} \) 可逆矩阵 \( A \) 有小的摄动 \( \delta A \), 且 \( \left\|A^{-1}\right\| \cdot\|\delta A\|<1 \),
+\[
+(A+\delta A)\left(x_{0}+\delta x\right)=b,\left(A x_{0}=b\right)
+\]
+得
+\[
+\frac{\left\|\left(x_{0}+\delta x\right)-x_{0}\right\|}{\left\|x_{0}\right\|}=\frac{\|\delta x\|}{\left\|x_{0}\right\|} \leq \frac{K(A) \frac{\|\delta A\|}{\|A\|}}{1-K(A) \frac{\|\delta A\|}{\|A\|}}
+\]
+\end{theorem}
+
+\begin{theorem}
+	在方程组 \( {A} {x}={b} \) 中, \( {b} \ne 0\)有小的摄动 \( \delta b \), 可逆矩阵 \( A \) 有小的摄动 \( \delta A \),且$\|A^{-1}\|\| \delta A\|<1$
+\[
+(A+\delta A)\left(x_{0}+\delta x\right)=b+\delta b,\left(A x_{0}=b\right)
+\]
+得
+	\[
+	\frac{\left\|\left(x_{0}+\delta x\right)-x_{0}\right\|}{\left\|x_{0}\right\|}=\frac{\|\delta x\|}{\left\|x_{0}\right\|} \leq \dfrac{K(A)}{r(A)}\left( \frac{\|\delta A\|}{\|A\|}+\frac{\|\delta b\|}{\|b\|}  \right)
+	\]其中，$r(A)=1-K(A)\frac{\|\delta A\|}{\|A\|}>0$
+\end{theorem}

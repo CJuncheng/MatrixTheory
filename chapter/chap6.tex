@@ -1,0 +1,49 @@
+\section{广义逆矩阵}
+
+
+矩阵的单边逆、广义逆、自反广义逆均不唯一，M-P广义逆是唯一的
+\begin{enumerate}
+\item \colorbox{yellow}{$A\in C^{m\times n},G\in C^{n\times m} \quad \left\{\begin{array}{l}
+	GA=E_n \Rightarrow G=A_L^{-1}\\
+	AG=E_m \Rightarrow G=A_R^{-1}
+\end{array}\right.
+$	}
+\item \colorbox{yellow}{$A\in C^{m\times n},G\in C^{n\times m} \quad AGA=A \Rightarrow G=A^{-}
+	$}
+\item \colorbox{yellow}{$A\in C^{m\times n},G\in C^{n\times m} \quad AGA=A \quad GAG=G \Rightarrow G=A_r^{-}
+	$}
+\item $A\{1\}=\{G|AGA=A, \forall G\in C^{n\times m}\}$
+\item $A\{1,2\}=\{G|AGA=A, GAG=G,\forall G\in C^{n\times m}\}$
+\item 
+	\colorbox{yellow}{$A \in C_{n}^{m \times n} \Leftrightarrow A_{L}^{-1} \text { 存在 } \Leftrightarrow N(A)=\{0\} \Leftrightarrow A^{-} A=E_{n} $}
+	\begin{enumerate}
+		\item $P\begin{pmatrix}A& E_m\end{pmatrix}\xlongequal[]{\mbox{初等行变换}}\begin{pmatrix}E_n&G\\ *&*\end{pmatrix}\Rightarrow G=A_L^{-1}$
+		\item $Ax=b$有解$\Leftrightarrow (E_m-AA_L^{-1})b=0$ 且$x=A_L^{-1}b=(A^HA)^{-1}A^Hb$(\textcolor{red}{唯一解})
+	\end{enumerate}
+\item	\colorbox{yellow}{$A \in C_{m}^{m \times n} \Leftrightarrow A_{R}^{-1} \text { 存在 } \Leftrightarrow R(A)=C^{m} \Leftrightarrow A A^{-}=E_{m}$}
+	\begin{enumerate}
+		\item $\begin{pmatrix}A\\ E_n\end{pmatrix}Q\xlongequal[]{\mbox{初等列变换}}\begin{pmatrix}E_m&*\\ G&*\end{pmatrix}\Rightarrow G=A_R^{-1}$
+		\item $Ax=b$对$\forall b \in C^{m}$都有解，若$b\ne 0$,则$x=A_R^{-1}b=A^H(AA^H)^{-1}b$
+	\end{enumerate}
+\item $A^{-}$矩阵的性质：设$A\in C{m\times n}, \lambda \in C$
+	\begin{enumerate}
+		\item $(A^T)^{-}=(A^{-})^T,(A^H)^{-}=(A^{-})^H$
+		\item $AA^{-},A^{-}A$都是幂等矩阵，且
+		\[
+		\mathrm{rank}(A)=\mathrm{rank}(AA^{-})=\mathrm{rank}(A^{-}A)\leq\mathrm{rank}(A^{-})
+		\]
+		\item $\lambda^{-}A^{-}$为$\lambda A$的广义逆矩阵，其中$\lambda^{-}=\left\{\begin{array}{ll}
+			0&\lambda =0\\
+			\lambda^{-1}&\lambda \ne 0
+		\end{array}\right.$
+	\item $A \in C^{m\times n}, S \in C^{m\times m}_m,T\in  C^{n\times n}_n$且$B=SAT$,则$B^{-}=T^{-1}A^{-}S^{-1}$
+	\item $R(AA^{-})=R(A),N(A^{-}A)=N(A)$
+	\end{enumerate}
+\item  $A \in C^{m\times n}, P \in C^{m\times m}_m,Q\in  C^{n\times n}_n\Rightarrow Q(PAQ)^{-}P\in A\{1\}$
+\end{enumerate}
+
+
+
+
+
+
